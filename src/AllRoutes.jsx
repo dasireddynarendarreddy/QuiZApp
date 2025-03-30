@@ -5,6 +5,7 @@ import Quizgen from './Quizgen'
 import Login from './Login'
 import Signup from './Signup'
 import ProtectedRoute from './ProtectedRoute'
+import Visualize from './Visualize'
 export const Quiz=React.createContext();
 function AllRoutes() {
     const[topic,setTopic]=useState('java')
@@ -23,7 +24,7 @@ function AllRoutes() {
         <Route path="signup" element={<Signup/>}/>
         <Route path="sel" element={<ProtectedRoute><App/></ProtectedRoute>}/>
         <Route path="quiz" element={<ProtectedRoute><Quizgen/></ProtectedRoute>}/>
-
+         <Route path="stat" element={<ProtectedRoute><Visualize/></ProtectedRoute>}/>
       </Routes>
       </Quiz.Provider>
     </div>
