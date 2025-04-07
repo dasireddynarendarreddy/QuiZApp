@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { Progress } from "@/components/ui/progress"
 import { Button } from './components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { Loader2 } from 'lucide-react';
 function Quizgen() {
  
 const {ques,setQues,topic}=useContext(Quiz);
@@ -16,8 +17,10 @@ const[quesattempt,setQuesAtm]=useState([])
 const[correctans,setCorrect]=useState(0)
 const navigate=useNavigate();
 const[localdata,setLoclData]=useState([])
+const[submit,setSubmit]=useState(false)
 const saveQuiz=()=>{
-  
+  if(quesattempt.length>0)
+  {
    if(localStorage.getItem("userstats")==null)
      localStorage.setItem("userstats",JSON.stringify([{topic:"taken quiz on"+topic,date:new Date().toUTCString(),correctans:correctans,noofques:ques.length,attempted:quesattempt.length}]))
     else{
@@ -38,9 +41,18 @@ const saveQuiz=()=>{
   });
 
   // Save the updated array back to localStorage
+  setSubmit(true)
   localStorage.setItem("userstats", JSON.stringify(data));
+  setSubmit(false)
   navigate("/stat")
     }
+  }
+  else{
+    toast.error("you have to attempt the quiz first!",{
+      duration:1000,
+      closeButton:true
+    })
+  }
 }
   
    const checkAnswer=(val)=>{
@@ -126,7 +138,10 @@ const saveQuiz=()=>{
 ) : (
   <p>No questions available</p>
 )}
-     <Button className="cursor-pointer" onClick={saveQuiz}>Submit</Button>
+     <Button type="submit" onClick={saveQuiz} disabled={submit?true:false} className="cursor-pointer">
+                     {submit&& <Loader2 className="animate-spin mr-2 h-4 w-4" />}
+                     {submit ? "submitting..." : "submit"}
+                   </Button>
 
     </div>
   )
