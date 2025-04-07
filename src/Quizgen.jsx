@@ -73,13 +73,13 @@ const saveQuiz=()=>{
       
       
       toast.success("correct answer",{
-        duration: 1000, // Stays until manually closed
+        duration: 1000, 
         closeButton: true,
       })
      }
      else{
       toast.error("wrong answer",{
-        duration: 1000, // Stays until manually closed
+        duration: 1000,
         closeButton: true,
         
       })
