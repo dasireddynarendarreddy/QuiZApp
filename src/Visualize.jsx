@@ -14,7 +14,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-
+import FeedBack from "./FeedBack";
 // Register the necessary components including the BarController
 Chart.register(BarController, BarElement, LinearScale, CategoryScale, Title, Tooltip, Legend);
 
@@ -126,6 +126,7 @@ const Visualize = () => {
   }, []);
 
   return (
+    <div>
     <Card>
       <CardHeader>
         <h2>Quiz Stats</h2>
@@ -134,6 +135,9 @@ const Visualize = () => {
         <canvas ref={chartRef}></canvas>
       </CardContent>
     </Card>
+    <FeedBack/>
+    </div>
+
   );
 };
 

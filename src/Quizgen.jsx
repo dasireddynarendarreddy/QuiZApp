@@ -10,11 +10,12 @@ import { Button } from './components/ui/button';
 import { useNavigate } from 'react-router-dom';
 function Quizgen() {
  
-const {ques,topic}=useContext(Quiz);
+const {ques,setQues,topic}=useContext(Quiz);
 const[prog,setProgress]=useState(0)
 const[quesattempt,setQuesAtm]=useState([])
 const[correctans,setCorrect]=useState(0)
 const navigate=useNavigate();
+const[localdata,setLoclData]=useState([])
 const saveQuiz=()=>{
   
    if(localStorage.getItem("userstats")==null)
@@ -46,6 +47,7 @@ const saveQuiz=()=>{
     
 
      const data=val.split("***");
+     console.log(val)
      console.log(data)
      
      let quesnumber=quesattempt.includes(data[data.length-1])
@@ -69,6 +71,7 @@ const saveQuiz=()=>{
       console.log(correctans)
       
       
+      
       toast.success("correct answer",{
         duration: 1000, // Stays until manually closed
         closeButton: true,
@@ -82,7 +85,7 @@ const saveQuiz=()=>{
       })
      }
    }
-
+ 
   return (
     <div>
        

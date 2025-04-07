@@ -15,6 +15,7 @@ import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { Toaster } from "@/components/ui/sonner"; // Custom Toaster import
 import { toast } from "sonner"; 
+import FeedBack from "./FeedBack"
 export function Login() {
     const{password,setPassword,mail,setMail}=useContext(Quiz)
     const navigate=useNavigate()
@@ -87,6 +88,7 @@ export function Login() {
       </form>
     </CardContent>
   </Card>
+ 
 </div>
 
   )
