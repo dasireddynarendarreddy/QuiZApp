@@ -1,11 +1,13 @@
 import React,{useEffect, useState} from 'react'
 import {Routes,Route} from "react-router-dom"
-import App from './App'
-import Quizgen from './Quizgen'
-import Login from './Login'
-import Signup from './Signup'
-import ProtectedRoute from './ProtectedRoute'
-import Visualize from './Visualize'
+
+
+const Visualize=React.lazy(() => import('./Visualize'));
+const ProtectedRoute=React.lazy(() => import('./ProtectedRoute'));
+const Signup=React.lazy(()=>import('./Signup'))
+const Login=React.lazy(()=> import('./Login'))
+const Quizgen=React.lazy(()=>import('./Quizgen'))
+const App=React.lazy(()=>import('./App'))
 export const Quiz=React.createContext();
 function AllRoutes() {
     const[topic,setTopic]=useState('java')

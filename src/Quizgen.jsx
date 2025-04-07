@@ -1,5 +1,5 @@
-import React,{useContext, useEffect, useState} from 'react'
-import { GoogleGenAI } from "@google/genai";
+import React,{useContext, useState} from 'react'
+
 import { Quiz } from './AllRoutes';
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
@@ -16,7 +16,7 @@ const[prog,setProgress]=useState(0)
 const[quesattempt,setQuesAtm]=useState([])
 const[correctans,setCorrect]=useState(0)
 const navigate=useNavigate();
-const[localdata,setLoclData]=useState([])
+
 const[submit,setSubmit]=useState(false)
 const saveQuiz=()=>{
   if(quesattempt.length>0)
@@ -31,7 +31,7 @@ const saveQuiz=()=>{
   if (!Array.isArray(data)) {
     data = [];  // In case the data is not an array, reinitialize it
   }
-
+  setSubmit(true)
   data.push({
     topic: "taken quiz on " + topic,
     date: new Date().toUTCString(),
@@ -41,14 +41,14 @@ const saveQuiz=()=>{
   });
 
   // Save the updated array back to localStorage
-  setSubmit(true)
+ 
   localStorage.setItem("userstats", JSON.stringify(data));
   setSubmit(false)
   navigate("/stat")
     }
   }
   else{
-    toast.error("you have to attempt the quiz first!",{
+    toast.error("you have to attempt the quiz first or select the topic!",{
       duration:1000,
       closeButton:true
     })
@@ -59,16 +59,16 @@ const saveQuiz=()=>{
     
 
      const data=val.split("***");
-     console.log(val)
-     console.log(data)
+     //console.log(val)
+     //console.log(data)
      
      let quesnumber=quesattempt.includes(data[data.length-1])
-     console.log(quesnumber)
+     //console.log(quesnumber)
       if(!quesnumber)
       {
-        console.log(quesattempt)
+       // console.log(quesattempt)
         let len=quesattempt.push(data[data.length-1])
-        console.log(len)
+        //console.log(len)
         let per=(len/ques.length) * 100;
         setProgress(per)
       }
@@ -80,7 +80,7 @@ const saveQuiz=()=>{
      if(ques[(data[parseInt(data.length-1)])].correctAnswer==data[0])
      {
       setCorrect((pre)=>pre+1)
-      console.log(correctans)
+     // console.log(correctans)
       
       
       
