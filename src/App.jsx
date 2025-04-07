@@ -111,6 +111,9 @@ Ensure the output contains exactly ${noofques} questions and provide only the JS
                   <SelectItem value="c#">C#</SelectItem>
                   <SelectItem value="c++">C++</SelectItem>
                   <SelectItem value="javascript">Javascript</SelectItem>
+                  <SelectItem value="javascript">spring boot</SelectItem>
+                  <SelectItem value="javascript">Advance Java</SelectItem>
+                  <SelectItem value="javascript">JDBC</SelectItem>
                 </SelectContent>
               </Select>
             </div>
