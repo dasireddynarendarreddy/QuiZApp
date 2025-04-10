@@ -39,7 +39,7 @@ export default function App() {
 - An "options" key with an array of possible answers.
 - A "correctAnswer" key with the correct answer.
 - the level of questions is ${type}
--every time give the new questions are generate random questions
+-every time give the "new" questions are generate "random" questions
 
 Ensure the output contains exactly ${noofques} questions and provide only the JSON data, without assigning it to any variable like const reactQuiz =.`
       }
