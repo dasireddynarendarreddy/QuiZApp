@@ -21,17 +21,23 @@ const[submit,setSubmit]=useState(false)
 const saveQuiz=()=>{
   if(quesattempt.length>0)
   {
+    
    if(localStorage.getItem("userstats")==null)
+   {
+    setSubmit(true)
      localStorage.setItem("userstats",JSON.stringify([{topic:"taken quiz on"+topic,date:new Date().toUTCString(),correctans:correctans,noofques:ques.length,attempted:quesattempt.length}]))
+     setSubmit(false)
+   }
     else{
       let data = JSON.parse(localStorage.getItem("userstats"));
       console.log(data)
+      setSubmit(true)
   
   // Ensure that data is an array
   if (!Array.isArray(data)) {
     data = [];  // In case the data is not an array, reinitialize it
   }
-  setSubmit(true)
+  
   data.push({
     topic: "taken quiz on " + topic,
     date: new Date().toUTCString(),
